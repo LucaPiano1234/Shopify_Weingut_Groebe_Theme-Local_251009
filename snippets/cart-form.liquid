@@ -1,0 +1,206 @@
+<cart-form id="AjaxCartForm">
+
+  {%- liquid
+    if settings.show_currency_codes
+      assign iso_code = localization.country.currency.iso_code | prepend: ' ' 
+    endif
+
+		assign cart_item_count = cart.item_count
+		for item in cart.items
+			if item.product.type == 'Fees'
+				assign cart_item_count = cart_item_count | minus: item.quantity
+			endif
+		endfor
+  -%}
+
+	{%- if template != 'cart' and settings.cart_free_shipping -%}
+		<shipping-notice
+			class="cart-notice hide-if-empty-cart"
+			data-free-shipping="{{ settings.cart_free_shipping_amount | times: 100 }}"
+			data-cart-total-amount="{{ cart.total_price }}"
+		>
+		</shipping-notice>
+		<script src="{{ 'component-shipping-notice.js' | asset_url }}" defer></script>
+	{%- endif -%}
+
+	<form action="{{ routes.cart_url }}" method="post" novalidate class="cart__form {% if cart.item_count == 0 %} cart--empty {% endif %}" id="cart">
+	
+		<div class="cart-holder" data-items="{{ cart.items.size }}">
+			
+			<div class="cart__items">
+
+				{%- if cart.item_count > 0 -%}
+				
+					{%- assign processed_group_ids = '' -%}
+					{%- for item in cart.items -%}
+						{%- assign group_id = item.properties._group_id | default: item.id -%}
+						{%- unless processed_group_ids contains group_id -%}
+							{%- assign processed_group_ids = processed_group_ids | append: group_id | append: ',' -%}
+							{%- assign group_indices = '' -%}
+							{%- assign main_item_index = forloop.index0 -%}
+							{%- for cart_item in cart.items -%}
+								{%- if cart_item.properties._group_id == group_id or cart_item.id == group_id -%}
+									{%- assign group_indices = group_indices | append: forloop.index0 | append: ',' -%}
+									{%- if cart_item.properties._main_product == 'true' -%}
+										{%- assign main_item_index = forloop.index0 -%}
+									{%- endif -%}
+								{%- endif -%}
+							{%- endfor -%}
+							{%- assign main_item = cart.items[main_item_index] -%}
+
+							<div id="item-{{ main_item.id }}" class="cart-item" data-title="{{ main_item.product.title | escape }} {%- unless main_item.product.has_only_default_variant -%} ({{ main_item.variant.title | escape }}) {%- endunless -%}" data-id="{{ main_item.key }}"  data-line="{{ forloop.index }}" data-product-id="{{ main_item.product.id }}" data-qty="{{ main_item.quantity }}" data-js-cart-item  data-js-cart-item data-group-id="{{ item.properties._group_id }}">
+
+								<a href="{{ main_item.url }}" class="cart-item__thumbnail element--border-width-clamped element--border-radius">
+									{%- render 'lazy-image-small', image: main_item.image, aspect_ratio: settings.cart_image_ratio, fit: settings.cart_image_fit -%}
+								</a>
+
+								<div class="cart-item__content">
+
+									<div>
+
+										{%- unless main_item.gift_card -%}
+											<div class="cart-item__price">
+
+												{%- if main_item.final_line_price < main_item.original_line_price -%}
+													<span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
+													<strong>{{ main_item.final_line_price | money | append: iso_code }}</strong>
+													<span class="visually-hidden">{{ 'general.accessibility_labels.price.sale' | t }}</span>
+													<span><del>{{ main_item.original_line_price | money | append: iso_code }}</del></span>
+												{%- elsif main_item.variant.compare_at_price > main_item.variant.price -%}
+													<span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
+													<strong>{{ main_item.final_line_price | money | append: iso_code }}</strong>
+													<span class="visually-hidden">{{ 'general.accessibility_labels.price.sale' | t }}</span>
+													<span><del>{{ main_item.variant.compare_at_price | times: main_item.quantity | money | append: iso_code }}</del></span>
+												{%- else -%}
+													<span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
+													<strong>{{ main_item.final_line_price | money | append: iso_code }}</strong>
+												{%- endif -%}
+
+											</div>
+										{%- endunless -%}
+
+										{%- if main_item.unit_price_measurement -%}
+											<span class="cart-item__unit-price text-size--small text-color--opacity">
+												{{ main_item.unit_price | money | append: iso_code }} / 
+												{% if main_item.unit_price_measurement.reference_value != 1 %}
+													{{ main_item.unit_price_measurement.reference_value }}
+												{% endif %}
+												{{ main_item.unit_price_measurement.reference_unit }}
+											</span>
+										{%- endif -%}
+
+										<a href="{{ main_item.url }}" class="cart-item__title">
+											<span class="text-animation--underline-thin">{{ main_item.product.title | escape }}</span>
+										</a>
+
+										{%- unless main_item.product.has_only_default_variant -%}
+												{%- for option in main_item.options_with_values -%}
+													<span class="cart-item__variant text-size--small text-color--opacity">
+														{{ option.name }}: {{ option.value }}
+												</span>
+												{%- endfor -%}
+										{%- endunless -%}
+
+										{%- if main_item.selling_plan_allocation -%}
+											<span class="text-size--small">
+												{{ main_item.selling_plan_allocation.selling_plan.name }} 
+											</span>
+										{%- endif -%}
+
+										{%- if main_item.line_level_discount_allocations.size > 0 -%}
+											{%- for discount_allocation in main_item.line_level_discount_allocations -%}
+												<spann class="text-size--xsmall">{{ 'cart.discount' | t }} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money | append: iso_code }})</spann>
+											{%- endfor -%}
+										{%- endif -%}
+
+										{%- assign group_indices_array = group_indices | split: ',' | reverse -%}
+										{%- for index in group_indices_array -%}
+											{%- assign index_int = index | plus: 0 -%}
+											{%- assign grouped_item = cart.items[index_int] -%}
+											{%- unless grouped_item == main_item -%}
+												<span data-js-cart-group-item data-id="{{ grouped_item.key }}" data-group-id="{{ grouped_item.properties._group_id }}" class="cart-item__property text-size--small text-line-height--small">
+													<strong>{{ grouped_item.product.title }}: </strong>
+													<span>{{ grouped_item.final_line_price | money | append: iso_code }}</span>
+												</span>
+											{%- endunless -%}
+										{%- endfor -%}
+
+										{%- assign property_size = main_item.properties | size -%}
+										{%- if property_size > 0 -%}
+											{%- for p in main_item.properties -%}
+												{%- assign p_first_char = p.first | slice: 0 -%}
+												{%- if p.last != blank and p_first_char != '_' -%}
+													<span class="cart-item__property text-size--xsmall text-line-height--small">
+														<strong>{{ p.first }}: </strong>
+														{%- if p.last contains '/uploads/' -%}
+															<a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+														{%- else -%}
+															<span>{{ p.last }}</span>
+														{%- endif -%}
+													</span>
+												{%- endif -%}
+											{%- endfor -%}
+										{%- endif -%}
+
+										<div class="cart-item__actions">
+											
+											<product-quantity class="quantity-selector-holder">
+												<cart-product-quantity>
+													<button class="qty-button qty-minus no-js-hidden" aria-label="{{ 'general.accessibility_labels.decrease_quantity' | t }}" role="button" controls="updates_{{ main_item.id }}">
+														{%- render 'theme-symbols', icon: 'minus' -%}
+													</button>
+													<label for="qty-{{ id }}" class="visually-hidden">{{ 'general.accessibility_labels.quantity' | t }}</label>
+													<input type="number" name="updates[]" value="{{ main_item.quantity }}" min="0" class="qty qty-selector product__quantity" id="updates_{{ main_item.id }}" data-href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=$qty">
+													<button class="qty-button qty-plus no-js-hidden" aria-label="{{ 'general.accessibility_labels.increase_quantity' | t }}" role="button" controls="updates_{{ main_item.id }}">
+														{%- render 'theme-symbols', icon: 'plus' -%}
+													</button>
+												</cart-product-quantity>
+											</product-quantity>
+											<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove text-link text-size--xsmall text-color--opacity" title="{{ 'cart.remove_item' | t }}">{{ 'cart.remove_item' | t }}</a>
+				
+										</div>
+
+										<div class="cart-item__total text-align--right">
+											{%- assign group_total_price = 0 -%}
+											{%- for grouped_item in group_indices_array -%}
+												{%- assign index_int = grouped_item | plus: 0 -%}
+												{%- assign group_total_price = group_total_price | plus: cart.items[index_int].final_line_price -%}
+											{%- endfor -%}
+
+											<span class="visually-hidden">{{ 'general.accessibility_labels.price.regular' | t }}</span>
+											<strong>{{ group_total_price | money | append: iso_code }}</strong>
+										</div>
+
+									</div>
+
+								</div>
+									
+							</div>
+						{%- endunless -%}
+					{%- endfor -%}
+
+				{%- else -%}
+
+					{{ 'cart.empty' | t }}
+
+				{%- endif -%}
+
+			</div>
+
+		</div>
+
+	</form>
+
+	{%- liquid
+		assign cart_item_count = cart.item_count
+		for item in cart.items
+			if item.product.type == 'Fees'
+				assign cart_item_count = cart_item_count | minus: item.quantity
+			endif
+		endfor          
+	-%}
+
+	<span class="cart__count hidden" aria-hidden="true" data-cart-count>{{ cart_item_count }}</span>
+	<span class="cart__total hidden" aria-hidden="true" data-cart-total>{{ cart.total_price | money | append: iso_code }}</span>
+
+</cart-form>
