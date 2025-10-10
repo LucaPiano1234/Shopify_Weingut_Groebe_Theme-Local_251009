@@ -11,13 +11,19 @@ if ( typeof MainHeader !== 'function' ) {
 
 			/* -- > DRAWERS < -- */
 
+			document.querySelectorAll('#main > div').forEach(elm=>{
+				if ( ! elm.classList.contains('inert-inside') ) {
+					elm.setAttribute('data-js-inert', '');
+				}
+			})
+			window.inertElems = document.querySelectorAll('[data-js-inert]');
+
 			// Sticky header
 
 			if ( this.hasAttribute('data-sticky-header') ) {
 
 				const stickyHeader = document.createElement('div');
 				stickyHeader.classList = 'sticky-header'
-				stickyHeader.setAttribute('data-js-inert', '');
 				stickyHeader.innerHTML = `<div class="header__bottom header-container container--large portable-hide">
 					${this.querySelector('.header__bottom').innerHTML}
 				</div>
@@ -26,17 +32,8 @@ if ( typeof MainHeader !== 'function' ) {
 				</div>`;
 				document.body.append(stickyHeader);
 
-				if ( this.querySelector('.button--cart-handle') && stickyHeader.querySelector('.header-actions') ) {
-					stickyHeader.querySelector('.header-actions').append(this.querySelector('.button--cart-handle').cloneNode(true));
-				}
-
 				stickyHeader.querySelectorAll('[id]').forEach(elm=>{
 					elm.id = `${elm.id}-sticky`;
-				})
-				stickyHeader.querySelectorAll('[aria-controls]').forEach(elm=>{
-					if ( ! ( elm.hasAttribute('data-js-sidebar-handle') || elm.hasAttribute('data-modal') ) ) {
-						elm.setAttribute('aria-controls', `${elm.getAttribute('aria-controls')}-sticky`);
-					}
 				})
 
 				window.lst = window.scrollY;
@@ -109,7 +106,6 @@ if ( typeof MainHeader !== 'function' ) {
 						if ( e.keyCode == window.KEYCODES.RETURN ) {
 							elm.setAttribute('aria-expanded', 'true');
 							elmSidebar.show();
-							window.lastFocusedElm = elm;
 							elmSidebar.querySelector('[data-js-close]').focus();
 						}
 					})
@@ -119,16 +115,6 @@ if ( typeof MainHeader !== 'function' ) {
 			// closing drawers
 
 			document.querySelectorAll('sidebar-drawer [data-js-close]').forEach(elm=>{
-				elm.addEventListener('keydown', e=>{
-					if ( e.keyCode == window.KEYCODES.RETURN ) {
-						if ( window.lastFocusedElm ) {
-							setTimeout(()=>{
-								window.lastFocusedElm.focus();
-								window.lastFocusedElm = null;
-							}, 100);
-						}
-					}
-				});
 				elm.addEventListener('click', e=>{
 					e.preventDefault();
 					if ( e.target.closest('.sidebar').classList.contains('sidebar--opened') ) {
@@ -145,10 +131,6 @@ if ( typeof MainHeader !== 'function' ) {
 				if ( e.keyCode == window.KEYCODES.ESC ) {
 					if ( document.querySelector('.sidebar--opened') ) {
 						document.querySelector('.sidebar--opened').hide();
-						if ( window.lastFocusedElm ) {
-							window.lastFocusedElm.focus();
-							window.lastFocusedElm = null;
-						}
 					}
 				}
 			});
@@ -166,23 +148,9 @@ if ( typeof MainHeader !== 'function' ) {
 				--window-height: ${window.innerHeight}px;
 			}`;
 
-			// Inert elements
-
-			document.querySelectorAll('#main > div').forEach(elm=>{
-				if ( ! elm.classList.contains('inert-inside') ) {
-					elm.setAttribute('data-js-inert', '');
-				}
-			})
-			window.inertElems = document.querySelectorAll('[data-js-inert]');
-
 			// Init modal windows
 
 			document.querySelectorAll('[aria-controls="modal-store-selector"]').forEach(elm=>{
-				elm.addEventListener('keydown', e=>{
-					if ( e.keyCode == window.KEYCODES.RETURN ) {
-						window.lastFocusedElm = elm;
-					}
-				})
 				elm.addEventListener('click', e=>{
 					e.preventDefault();
 					if ( document.querySelector('.sidebar--opened') ) {
@@ -213,7 +181,7 @@ if ( typeof MainHeader !== 'function' ) {
 						elm.querySelector('.normal-menu').style.left = `${rtl ? elm.getBoundingClientRect().right : elm.getBoundingClientRect().left}px`;
 					}
 				})
-			});
+			})
 
 			// predictive search
 
@@ -256,23 +224,23 @@ if ( typeof MainHeader !== 'function' ) {
 			}
 			let babyMenuTouch = false;
 			document.querySelectorAll('.style--classic .has-babymenu').forEach(elm=>{
-				elm.addEventListener('touchstart', ()=>{
+				elm.addEventListener('touchstart', e=>{
 					elm.firstElementChild.style.pointerEvents = 'none';
 					elm.classList.toggle('focus');
 					babyMenuTouch = true;
 					closeTouchSubmenus(elm,elm.closest('.has-submenu'));
-				}, { passive:true });
+				})
 			})
 			document.querySelectorAll('.style--classic .has-submenu').forEach(elm=>{
 				if ( ! elm.classList.contains('mega-link') ) {
-					elm.addEventListener('touchstart', ()=>{
-						elm.firstElementChild.style.pointerEvents = 'none';
-						if ( ! babyMenuTouch ) {
-							elm.classList.toggle('focus');
-							closeTouchSubmenus(elm);
-						}
+					elm.addEventListener('touchstart', e=>{
+					elm.firstElementChild.style.pointerEvents = 'none';
+					if ( ! babyMenuTouch ) {
+						elm.classList.toggle('focus');
+						closeTouchSubmenus(elm);
+					}
 						babyMenuTouch = false;
-					}, { passive:true });
+					})
 				}
 			})
 
@@ -281,7 +249,6 @@ if ( typeof MainHeader !== 'function' ) {
 			document.querySelectorAll('.site-nav.style--classic .has-submenu > a').forEach(childEl=>{
 
 				const elm = childEl.parentNode;
-				const elmMenu = document.getElementById(childEl.getAttribute('aria-controls'));
 
 				elm.addEventListener('keydown', e=>{
 
@@ -291,12 +258,10 @@ if ( typeof MainHeader !== 'function' ) {
 						}
 						if ( ! elm.classList.contains('focus') ) {
 							elm.classList.add('focus');
-							e.target.setAttribute('aria-expanded', 'true');
-							//elmMenu.setAttribute('aria-hidden', 'false');
+							elm.setAttribute('aria-expanded', 'true');
 						} else if ( document.activeElement.parentNode.classList.contains('has-submenu') && elm.classList.contains('focus') ) {
 							elm.classList.remove('focus');
-							e.target.setAttribute('aria-expanded', 'true');
-							//elmMenu.setAttribute('aria-hidden', 'false');
+							elm.setAttribute('aria-expanded', 'true');
 						}
 					}
 				});	
@@ -305,8 +270,7 @@ if ( typeof MainHeader !== 'function' ) {
 					elm.querySelector('.submenu-holder > li:last-child a').addEventListener('focusout', e=>{
 						if ( elm.classList.contains('focus') ) {
 							elm.classList.remove('focus');
-							e.target.setAttribute('aria-expanded', 'false');
-							//elmMenu.setAttribute('aria-hidden', 'true');
+							elm.setAttribute('aria-expanded', 'false');
 						}
 					});
 				}
@@ -316,7 +280,6 @@ if ( typeof MainHeader !== 'function' ) {
 			document.querySelectorAll('.site-nav.style--classic .has-babymenu:not(.mega-link) > a').forEach(childEl=>{	
 
 				const elm = childEl.parentNode;
-				const elmMenu = document.getElementById(childEl.dataset.ariaControls);
 
 				elm.addEventListener('keydown', e=>{
 					if ( e.keyCode == window.KEYCODES.RETURN ) {
@@ -325,12 +288,10 @@ if ( typeof MainHeader !== 'function' ) {
 						}
 						if ( ! elm.classList.contains('focus') ) {
 							elm.classList.add('focus');
-							e.target.setAttribute('aria-expanded', 'true');
-							//elmMenu.setAttribute('aria-hidden', 'false');
+							elm.setAttribute('aria-expanded', 'true');
 						} else {
 							elm.classList.remove('focus');
-							e.target.setAttribute('aria-expanded', 'false');
-							//elmMenu.setAttribute('aria-hidden', 'true');
+							elm.setAttribute('aria-expanded', 'false');
 						}
 					}
 				});
@@ -386,7 +347,6 @@ if ( typeof SidebarDrawer !== 'function' ) {
 		show(){
 
 			this.opened = true;
-			this.removeAttribute('aria-hidden');
 			document.body.classList.add('sidebar-opened');
 			if ( this.classList.contains('sidebar--right') ) {
 				document.body.classList.add('sidebar-opened--right');
@@ -420,7 +380,7 @@ if ( typeof SidebarDrawer !== 'function' ) {
 				elm.removeAttribute('inert');
 			})
 
-			document.querySelector(`[aria-controls="${this.id}"]`)?.setAttribute('aria-expanded', 'false');
+			document.querySelector(`[aria-controls="${this.id}"]`).setAttribute('aria-expanded', 'false');
 
 			setTimeout(()=>{
 				this.style.display = 'none';
@@ -503,12 +463,8 @@ if ( typeof MobileNavigation !== 'function' ) {
 				mobileNavActions.querySelectorAll('[id]').forEach(elm=>{
 					elm.id = `${elm.id}-mobile`;
 				});
+				
 				mobileNavActions.querySelectorAll('[data-modal]').forEach(elm=>{
-					elm.addEventListener('keydown', e=>{
-						if ( e.keyCode == window.KEYCODES.RETURN ) {
-							window.lastFocusedElm = elm;
-						}
-					})
 					elm.addEventListener('click', e=>{
 						e.preventDefault();
 						if ( document.querySelector('.sidebar--opened') ) {

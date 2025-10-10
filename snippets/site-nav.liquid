@@ -1,15 +1,3 @@
-{%- comment -%}
-	Renders the site navigation.
-	
-	Accepts:
-	- linklist: {String} the linklist object.
-	- type: {String} the navigation type (can be "classic" or "sidebar").
-	- blocks: {array} the blocks object array (for the promotional blocks).
-	
-	Usage:
-	{% render 'site-nav', linklist: 'main-menu', type: 'classic', blocks: section.blocks %}
-{%- endcomment -%}
-
 {%- liquid
 	if type == "classic" 
 		assign links_class = "text-animation--underline-in-header"
@@ -38,7 +26,6 @@
 						{%- if block.type == 'mega-menu' and block.settings.menu_handle == link.handle -%}
 							
 							{%- assign link_is_mega_menu = true -%}
-							{%- assign link_is_mega_menu_with_images = block.settings.show_menu_images -%}
 							{%- assign mega_menus = true -%}
 
 							{%- if block.settings.show_promotion_block -%}
@@ -90,9 +77,9 @@
 											{%- liquid
 												assign color_text_brightness = block.settings.promotion_color_txt | color_brightness
 												if color_text_brightness > 150
-													assign color_text_foreground = settings.color_foreground_light
+													assign color_text_foreground = '#000'
 												else
-													assign color_text_foreground = settings.color_foreground_dark
+													assign color_text_foreground = '#fff'
 												endif
 											-%}
 											.menu-promotion[data-id="{{ block.id }}"] {
@@ -128,20 +115,14 @@
 
 					<li 
 						{% if link.links != blank %}
-							class="has-submenu" 
+							class="has-submenu" aria-controls="SiteNavLabel-{{ link.handle }}-{{ type }}" aria-expanded="false" 
 						{% elsif link_is_mega_menu %}
 							class="has-submenu submenu-is-mega-menu"
 						{% endif %} 
 						id="menu-item-{{ link.handle }}"
 					>
 
-						<a 
-							class="menu-link {% if link.active or link.child_active %} active {% endif %} {% unless link.links != blank or link_is_mega_menu %} no-focus-link {% endunless %}" 
-							href="{{ link.url }}"
-							{% if link_is_mega_menu or link.links != blank %}
-								aria-controls="SiteNavLabel-{{ link.handle }}-{{ type }}" aria-expanded="false" aria-haspopup="true"
-							{% endif %}
-						>
+						<a title="{{ link.title | escape }}" class="menu-link {% if link.active or link.child_active %} active {% endif %} {% unless link.links != blank or link_is_mega_menu %} no-focus-link {% endunless %}" href="{{ link.url }}">
 
 							<span><span class="{{ links_class }}">{{ link.title | escape }}</span></span>
 
@@ -153,12 +134,9 @@
 
 						{% if link.links != blank or link_is_mega_menu %}
 
-							<ul 
-								class="submenu {% if link_is_mega_menu %} mega-menu {% else %} normal-menu {% endif %}" 
-								id="SiteNavLabel-{{ link.handle }}-{{ type }}"
-							>
+							<ul class="submenu {% if link_is_mega_menu %} mega-menu {% else %} normal-menu {% endif %}" id="SiteNavLabel-{{ link.handle }}-{{ type }}">
 
-								<div class="submenu-holder {% if link_is_mega_menu and type == 'classic' %} container--large gutter--regular {% endif %}">
+								<div class="submenu-holder {% if link_is_mega_menu and type == 'classic' %} container--large {% endif %}">
 
 									{%- if link_is_mega_menu -%}
 										<div class="submenu-masonry {% if promotion_block %} with-promotion {% else %} without-promotion {% endif %}">
@@ -176,32 +154,11 @@
 												{% if link_is_mega_menu %} 
 													class="mega-link {% if childlink.links != blank %} has-babymenu {% endif %}"
 												{% elsif childlink.links != blank %}
-													class="has-babymenu"
+													class="has-babymenu" aria-controls="SiteNavLabel-{{ childlink.handle }}-{{ type }}" aria-expanded="false"
 												{% endif %}
 											>
 
-												{%- if link_is_mega_menu and link_is_mega_menu_with_images -%}
-													{%- liquid
-														assign image_name = childlink.handle | append: '.jpg'
-														assign image = images[image_name]
-														if image == blank
-															assign image_name = childlink.handle | append: '.webp'
-															assign image = images[image_name]
-														endif
-													-%}
-													{%- if image != blank -%}
-														<a href="{{ childlink.url }}" title="{{ childlink.title | escape }}" class="mega-image element--border-radius margin-bottom--regular">
-															{%- render 'lazy-image', image: image, sizes: '(max-width: 479px) 100vw, (max-width: 1280px) 420px, (max-width: 1380px) 25vw, 380px', alt: childlink.title, class: 'lazy-image--animation' -%}
-														</a>
-													{%- endif -%}
-												{%- endif -%}
-
-												<a class="menu-link {% if link_is_mega_menu == false and childlink.active or childlink.child_active %} active {% endif %} {% unless childlink.links != blank %} no-focus-link {% endunless %}" 
-													href="{{ childlink.url }}"
-													{% if link_is_mega_menu or childlink.links != blank  %}
-														aria-controls="SiteNavLabel-{{ childlink.handle }}-{{ type }}" aria-expanded="false" aria-haspopup="true"
-													{% endif %}
-												>
+												<a title="{{ childlink.title | escape }}" class="menu-link {% if link_is_mega_menu == false and childlink.active or childlink.child_active %} active {% endif %} {% unless childlink.links != blank %} no-focus-link {% endunless %}" href="{{ childlink.url }}">
 													<span><span class="{{ links_class }}">{{ childlink.title | escape }}</span></span>
 													{%- if childlink.links != blank -%}
 														<span class="icon">{%- render 'theme-symbols', icon: 'chevron' -%}</span>
@@ -211,9 +168,7 @@
 												{%- if childlink.links != blank -%}
 
 													<div class="babymenu">
-														<ul 
-															id="SiteNavLabel-{{ childlink.handle }}-{{ type }}"
-														>
+														<ul id="SiteNavLabel-{{ childlink.handle }}-{{ type }}">
 
 															{%- if type == 'sidebar' -%}
 																<li class="submenu-back">
@@ -226,13 +181,6 @@
 															{% endfor %}
 
 														</ul>
-
-														{%- if image != blank -%}
-															<div class="baby-image element--border-radius margin-bottom--regular">
-																{%- render 'lazy-image', image: image, sizes: '(max-width: 479px) 100vw,(max-width: 1280px) 420px, (max-width: 1380px) 25vw, 380px', alt: childlink.title -%}
-															</div>
-														{%- endif -%}
-
 													</div>
 
 												{%- endif -%}
@@ -271,7 +219,7 @@
 							endif
 						-%}" title="{{ 'general.breadcrumb.account' | t }}">
 							<span style="display: inline-flex; align-items: center;">
-								<span aria-hidden="true" style="display:flex; margin-inline-end:6px;">{%- render 'theme-symbols', icon: 'account' -%}</span>
+								{%- render 'theme-symbols', icon: 'account' -%}
 								{{ 'general.breadcrumb.account' | t }}
 							</span>
 						</a>

@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .template-gift-card {
   height: 100vh;
   padding: 20px;
@@ -62,6 +65,7 @@ html[dir=ltr] .gift-card__icon {
   .gift-card-content {
     padding: 25px;
   }
+
   .gift-card__actions a {
     width: 100%;
   }

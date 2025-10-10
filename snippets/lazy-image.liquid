@@ -1,21 +1,3 @@
-{%- comment -%}
-  Renders a regular image, that can be used in any area of the theme.
-
-  Accepts:
-  - image: {Object} the image object.
-	- sizes: {String} image sizes attribute.
-	- type: {String} image type (background or unset).
-	- alt: {String} image alt attribute (fallback to image.alt if not provided).
-	- image_alignment: {Boolean} whether the image should be aligned to the focal point.
-	- preload: {Boolean} whether the image should be lazy loaded or not (false: image is lazyloaded).
-	- ratio: {String} image aspect ratio (needs to be a valid width/height ratio).
-  - fit: {Boolean} whether the image should be cropped to fit the container.
-  - class: {String} additional classes to add to the figure element.
-
-  Usage:
-	{% render 'lazy-image', image: product.featured_image, sizes: '(max-width: 480px) 100vw, 50vw', type: 'background', alt: 'Product image', image_alignment: true, preload: false, ratio: '1', fit: true, class: 'product__image' %}
-{%- endcomment -%}
-
 {%- liquid
 
 	assign no_crop = true

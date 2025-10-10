@@ -1,3 +1,6 @@
+/*
+ *  1.0. Mixins
+*/
 .cart-section {
   display: grid;
   grid-template-columns: 3fr 1.4fr;
@@ -39,7 +42,7 @@ html[dir=rtl] .cart__subtotal-widget {
 html[dir=ltr] .cart__subtotal-widget {
   left: 0;
 }
-.cart__subtotal-widget .button:not(#cartDiscountSubmit) {
+.cart__subtotal-widget .button {
   width: 100%;
 }
 
@@ -81,6 +84,11 @@ html[dir=ltr] .cart__subtotal-widget {
 }
 .cart-form-item--layout .cart-item__thumbnail {
   grid-area: thumbnail;
+}
+@media screen and (max-width: 767px) {
+  .cart-form-item--layout .cart-item__thumbnail {
+    align-self: stretch;
+  }
 }
 .cart-form-item--layout .cart-form-item__price-title-variants {
   grid-area: price-title-variants;

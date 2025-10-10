@@ -1,23 +1,12 @@
-{%- comment -%}
-  Renders the price range filter.
-
-  Accepts:
-  - filter: {Object} the actual filter object.
-  - location: {String} the location of the filter (used for unique identification).
-
-  Usage:
-  {% render 'filter-blocks', filter: filter, location: 'desktop' %}
-{%- endcomment -%}
-
 {%- assign min_value = filter.min_value.value | default: 0.0 | divided_by: 100.0 -%}
 {%- assign max_value = filter.max_value.value | default: filter.range_max | divided_by: 100.0 -%}
 {%- assign range_max = filter.range_max | divided_by: 100.0 | ceil -%}
 
 <price-range class="facets__price">
   <div class="field">
-    <span class="field__label visually-hidden">{{ 'collections.from' | t }}</span>
+    <label class="field__label visually-hidden" for="{{ location }}-Search-In-Modal">{{ 'collections.from' | t }}</label>
     <span class="field__currency">{{ cart.currency.symbol }}</span>
-    <input class="field__input field__input--price"
+    <input class="field__input"
       name="{{ filter.min_value.param_name }}"
       id="{{ location }}-Filter-{{ filter.label | escape }}-GTE"
       type="number"
@@ -27,11 +16,11 @@
     >
   </div>
 
-  <span class="field__label">{{ 'collections.to' | t }}</span>
+  <label class="field__label" for="{{ location }}-Search-In-Modal">{{ 'collections.to' | t }}</label>
   
   <div class="field">
     <span class="field__currency">{{ cart.currency.symbol }}</span>
-    <input class="field__input field__input--price"
+    <input class="field__input"
       name="{{ filter.max_value.param_name }}"
       id="{{ location }}-Filter-{{ filter.label | escape }}-LTE"
       type="number"
@@ -42,9 +31,9 @@
   </div>
 </price-range>
 
-{% unless min_value == 0 and max_value == 0 %}  
+<div class="range-slider-wrapper">
   <div
     id="{{ location }}-facets-price-range-slider"
     data-js-price-range-slider
   ></div>
-{%  endunless %}
+</div>

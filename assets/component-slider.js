@@ -1,4 +1,5 @@
 if ( typeof CSSSlider !== 'function' ) {
+
   class CSSSlider extends HTMLElement {
 
     constructor(){
@@ -15,14 +16,12 @@ if ( typeof CSSSlider !== 'function' ) {
           selector: '.css-slide', 
           snapping: true, 
           groupCells: false,
-          forceOneSlidePerPage: false,
           autoHeight: false, 
           navigation: true,
           navigationDOM: `<span class="css-slider-button css-slider-prev" style="display:none">←</span>
             <span class="css-slider-button css-slider-next" style="display:none">→</span>`,
           thumbnails: true,
           thumbnailsDOM: `<div class="css-slider-dot-navigation" style="display:none"></div>`,
-          thumbnailsNoInteraction: false,
           indexNav: false,
           indexNavDOM: `<div class="css-slider-index-navigation"><span class="css-slider-current">1</span> / <span class="css-slider-total">1</span></div>`,
           watchCSS: false,
@@ -31,7 +30,6 @@ if ( typeof CSSSlider !== 'function' ) {
           listenScroll: false,
           observer: true,
           disableMouseDownEvent: true,
-          disableTabNavigation: false,
           autoplay: 0
         }, ...JSON.parse(this.dataset.options)
       };
@@ -81,7 +79,7 @@ if ( typeof CSSSlider !== 'function' ) {
       this.classList.add('css-slider');
       this.originalHTML = this.innerHTML;
       this.innerHTML = `<div class="css-slider-viewport">
-        <div class="css-slider-holder" ${this.o.disableTabNavigation ? 'tabindex="-1"' : ''}>
+        <div class="css-slider-holder">
           <div class="css-slider-container">
             ${this.originalHTML}
           </div>
@@ -116,9 +114,7 @@ if ( typeof CSSSlider !== 'function' ) {
 
       if ( this.o.disableMouseDownEvent ) {
         this.querySelector('.css-slider-container').addEventListener('mousedown', e=>{
-          if ( e.target.tagName !== 'SELECT' ) {
-            e.preventDefault();
-          }
+          e.preventDefault();
         })
       }
       
@@ -131,55 +127,26 @@ if ( typeof CSSSlider !== 'function' ) {
 
       if ( this.o.navigation || this.o.thumbnails || this.indexNav ) {
 
-        const navigationElements = new DOMParser().parseFromString(this.o.navigationDOM, 'text/html');
         let container = document.createElement('div');
         container.classList.add('css-slider-navigation-container');
         container.innerHTML = `
-          ${(this.o.navigation ? navigationElements.querySelector('.css-slider-prev').outerHTML : '')}
+          ${(this.o.navigation ? this.o.navigationDOM : '')}
           ${(this.o.thumbnails ? this.o.thumbnailsDOM : '')}
-          ${(this.o.navigation ? navigationElements.querySelector('.css-slider-next').outerHTML : '')}
           ${(this.o.indexNav ? this.o.indexNavDOM : '')}`;
 
         if ( this.o.navigation ) {
-
           this.prevEl = container.querySelector('.css-slider-prev');
-          this.prevEl.setAttribute('tabindex', 0);
-          this.prevEl.setAttribute('role', 'button');
           this.prevEl.addEventListener('click', e=>{
             e.preventDefault();
             this.changeSlide('prev');
             this.dispatchEvent(this._navEvent);
           });
-          this.prevEl.addEventListener('keydown', e=>{
-				    if ( e.keyCode == window.KEYCODES.RETURN ) {
-              this.prevEl.click();
-            }
-          });
-          this.prevEl.querySelector('svg').setAttribute('aria-hidden', 'true');
-          const prevElA11y = document.createElement('span');
-          prevElA11y.textContent = window.KROWN.settings.locales.slider_prev_button_label;
-          prevElA11y.classList.add('visually-hidden');
-          this.prevEl.appendChild(prevElA11y);
-
           this.nextEl = container.querySelector('.css-slider-next');
-          this.nextEl.setAttribute('tabindex', 0);
-          this.nextEl.setAttribute('role', 'button');
           this.nextEl.addEventListener('click', e=>{
             e.preventDefault();
             this.changeSlide('next');
             this.dispatchEvent(this._navEvent);
           });
-          this.nextEl.addEventListener('keydown', e=>{
-				    if ( e.keyCode == window.KEYCODES.RETURN ) {
-              this.nextEl.click();
-            }
-          });
-          this.nextEl.querySelector('svg').setAttribute('aria-hidden', 'true');
-          const nextElA11y = document.createElement('span');
-          nextElA11y.textContent = window.KROWN.settings.locales.slider_next_button_label;
-          nextElA11y.classList.add('visually-hidden');
-          this.nextEl.appendChild(nextElA11y);
-
         }
 
         if ( this.o.thumbnails ) {
@@ -398,20 +365,6 @@ if ( typeof CSSSlider !== 'function' ) {
         }
       });
 
-      if ( ! this.o.disableTabNavigation ) {
-        const maxStart = Math.max(0, this.items.length - this.slidesPerPage); 
-        const start = this.index * this.slidesPerPage;
-        const adjustedStart = Math.min(start, maxStart);
-        const end = adjustedStart + this.slidesPerPage;
-        this.items.forEach((elm) => {
-          elm.setAttribute('inert', '');
-        });
-        for ( let i = adjustedStart; i < end && i < this.items.length; i++ ) {
-          const elm = this.items[i];
-          elm.removeAttribute('inert');
-        }
-      } 
-
       if ( parseInt(this.o.autoplay) > 0 ) {
         this._initAutoplay();
       }
@@ -456,7 +409,7 @@ if ( typeof CSSSlider !== 'function' ) {
 
       this.items.forEach((elm, i)=>{
         elm.classList.remove('css-slide--snap');
-        slidesWidth += elm.getBoundingClientRect().width;
+        slidesWidth += elm.offsetWidth;
         if ( slidesWidth > totalWidth && this.slidesPerPage == 0 ) {
           this.slidesPerPage = i;
         }
@@ -465,10 +418,6 @@ if ( typeof CSSSlider !== 'function' ) {
       if ( this.slidesPerPage == 0 ) {
         this.slidesPerPage = this.items.length;
         hideNavigation = true;
-      } 
-
-      if ( this.o.forceOneSlidePerPage ) {
-        this.slidesPerPage = 1;
       }
 
       const sliderDifference = totalWidth - slidesWidth;
@@ -505,19 +454,9 @@ if ( typeof CSSSlider !== 'function' ) {
           dot.classList.add('css-slider-dot');
           dot.dataset.index = i;
           this.thumbnailsEl.appendChild(dot);
-          if ( ! this.o.thumbnailsNoInteraction ) {
-            dot.addEventListener('click', (e)=>{
-              this.changeSlide(e.target.dataset.index);
-            });
-            dot.setAttribute('aria-label', window.KROWN.settings.locales.slider_thumbnail_label.replace('{{ count }}', i+1));
-            dot.setAttribute('role', 'button');
-            dot.setAttribute('tabindex', 0);
-            dot.addEventListener('keydown', e=>{
-              if ( e.keyCode == window.KEYCODES.RETURN ) {
-                dot.click();
-              }
-            });
-          }
+          dot.addEventListener('click', (e)=>{
+            this.changeSlide(e.target.dataset.index);
+          });
         }
         this.thumbnailsEl.style.setProperty('--size', this.length);
         this.thumbnails = this.thumbnailsEl.querySelectorAll('.css-slider-dot');
@@ -580,3 +519,5 @@ if ( typeof CSSSlider !== 'function' ) {
   });
   
 }
+
+!function(){"use strict";function o(){var o=window,t=document;if(!("scrollBehavior"in t.documentElement.style&&!0!==o.__forceSmoothScrollPolyfill__)){var l,e=o.HTMLElement||o.Element,r=468,i={scroll:o.scroll||o.scrollTo,scrollBy:o.scrollBy,elementScroll:e.prototype.scroll||n,scrollIntoView:e.prototype.scrollIntoView},s=o.performance&&o.performance.now?o.performance.now.bind(o.performance):Date.now,c=(l=o.navigator.userAgent,new RegExp(["MSIE ","Trident/","Edge/"].join("|")).test(l)?1:0);o.scroll=o.scrollTo=function(){void 0!==arguments[0]&&(!0!==f(arguments[0])?h.call(o,t.body,void 0!==arguments[0].left?~~arguments[0].left:o.scrollX||o.pageXOffset,void 0!==arguments[0].top?~~arguments[0].top:o.scrollY||o.pageYOffset):i.scroll.call(o,void 0!==arguments[0].left?arguments[0].left:"object"!=typeof arguments[0]?arguments[0]:o.scrollX||o.pageXOffset,void 0!==arguments[0].top?arguments[0].top:void 0!==arguments[1]?arguments[1]:o.scrollY||o.pageYOffset))},o.scrollBy=function(){void 0!==arguments[0]&&(f(arguments[0])?i.scrollBy.call(o,void 0!==arguments[0].left?arguments[0].left:"object"!=typeof arguments[0]?arguments[0]:0,void 0!==arguments[0].top?arguments[0].top:void 0!==arguments[1]?arguments[1]:0):h.call(o,t.body,~~arguments[0].left+(o.scrollX||o.pageXOffset),~~arguments[0].top+(o.scrollY||o.pageYOffset)))},e.prototype.scroll=e.prototype.scrollTo=function(){if(void 0!==arguments[0])if(!0!==f(arguments[0])){var o=arguments[0].left,t=arguments[0].top;h.call(this,this,void 0===o?this.scrollLeft:~~o,void 0===t?this.scrollTop:~~t)}else{if("number"==typeof arguments[0]&&void 0===arguments[1])throw new SyntaxError("Value could not be converted");i.elementScroll.call(this,void 0!==arguments[0].left?~~arguments[0].left:"object"!=typeof arguments[0]?~~arguments[0]:this.scrollLeft,void 0!==arguments[0].top?~~arguments[0].top:void 0!==arguments[1]?~~arguments[1]:this.scrollTop)}},e.prototype.scrollBy=function(){void 0!==arguments[0]&&(!0!==f(arguments[0])?this.scroll({left:~~arguments[0].left+this.scrollLeft,top:~~arguments[0].top+this.scrollTop,behavior:arguments[0].behavior}):i.elementScroll.call(this,void 0!==arguments[0].left?~~arguments[0].left+this.scrollLeft:~~arguments[0]+this.scrollLeft,void 0!==arguments[0].top?~~arguments[0].top+this.scrollTop:~~arguments[1]+this.scrollTop))},e.prototype.scrollIntoView=function(){if(!0!==f(arguments[0])){var l=function(o){for(;o!==t.body&&!1===(e=p(l=o,"Y")&&a(l,"Y"),r=p(l,"X")&&a(l,"X"),e||r);)o=o.parentNode||o.host;var l,e,r;return o}(this),e=l.getBoundingClientRect(),r=this.getBoundingClientRect();l!==t.body?(h.call(this,l,l.scrollLeft+r.left-e.left,l.scrollTop+r.top-e.top),"fixed"!==o.getComputedStyle(l).position&&o.scrollBy({left:e.left,top:e.top,behavior:"smooth"})):o.scrollBy({left:r.left,top:r.top,behavior:"smooth"})}else i.scrollIntoView.call(this,void 0===arguments[0]||arguments[0])}}function n(o,t){this.scrollLeft=o,this.scrollTop=t}function f(o){if(null===o||"object"!=typeof o||void 0===o.behavior||"auto"===o.behavior||"instant"===o.behavior)return!0;if("object"==typeof o&&"smooth"===o.behavior)return!1;throw new TypeError("behavior member of ScrollOptions "+o.behavior+" is not a valid value for enumeration ScrollBehavior.")}function p(o,t){return"Y"===t?o.clientHeight+c<o.scrollHeight:"X"===t?o.clientWidth+c<o.scrollWidth:void 0}function a(t,l){var e=o.getComputedStyle(t,null)["overflow"+l];return"auto"===e||"scroll"===e}function d(t){var l,e,i,c,n=(s()-t.startTime)/r;c=n=n>1?1:n,l=.5*(1-Math.cos(Math.PI*c)),e=t.startX+(t.x-t.startX)*l,i=t.startY+(t.y-t.startY)*l,t.method.call(t.scrollable,e,i),e===t.x&&i===t.y||o.requestAnimationFrame(d.bind(o,t))}function h(l,e,r){var c,f,p,a,h=s();l===t.body?(c=o,f=o.scrollX||o.pageXOffset,p=o.scrollY||o.pageYOffset,a=i.scroll):(c=l,f=l.scrollLeft,p=l.scrollTop,a=n),d({scrollable:c,method:a,startTime:h,startX:f,startY:p,x:e,y:r})}}"object"==typeof exports&&"undefined"!=typeof module?module.exports={polyfill:o}:o()}();

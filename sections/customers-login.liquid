@@ -73,7 +73,7 @@
 
 				{% form 'recover_customer_password', class: 'simple-form' %}
 
-					{%- render 'form-errors', form: form -%}
+					{% render 'form-errors', form: form %}
 
 					{% if form.posted_successfully? %}
 						{% assign reset_success = true %}

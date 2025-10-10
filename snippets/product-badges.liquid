@@ -1,16 +1,3 @@
-{%- comment -%}
-  Renders product badges.
-  
-  Accepts:
-  - product: {Object} the product object.
-  - text_class: {String} additional classes to add to the text.
-  
-  Usage:
-  {% render 'product-badges', product: product, text_class: 'text-center' %}
-{%- endcomment -%}
-
-{%- assign text_class = text_class | default: '' -%}
-
 <div class="product-item__badges {{ text_class }}">
 
   {%- if product.available == false -%}
@@ -21,7 +8,7 @@
     </span>
   {%- endif -%}
 
-  {%- if product.compare_at_price > product.price or product.compare_at_price_varies -%} 
+  {%- if product.compare_at_price > product.price -%} 
   
     {%- liquid 
       if product.compare_at_price_varies or product.price_varies
@@ -47,34 +34,29 @@
       endif
     -%}
 
-    {%- if compare_at_price > 0 -%}
-
-      <span class="product-item__badge product-item__badge--sale"
-        style="background-color: {{ settings.product_card_badge_sale_color }}; color: {{ settings.product_card_badge_sale_text_color }}"
-      > 
-        {%- liquid
-          if settings.product_card_badge_sale_type == 'percentage'
-            assign saved = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round | prepend: '-' | append: '%'
-              if compare_price_nums == 1 and product.compare_at_price_varies == false
-              echo saved
-            else 
-              echo 'products.grid.save_percent' | t: percent: saved
-            endif
-          elsif settings.product_card_badge_sale_type == 'amount'
-            assign saved = compare_at_price | minus: price | money
-            if compare_price_nums == 1
-              echo 'products.grid.save_amount_html' | t: amount: saved
-            else
-              echo 'products.grid.save_up_to_amount_html' | t: amount: saved
-            endif
+    <span class="product-item__badge product-item__badge--sale"
+      style="background-color: {{ settings.product_card_badge_sale_color }}; color: {{ settings.product_card_badge_sale_text_color }}"
+    > 
+      {%- liquid
+        if settings.product_card_badge_sale_type == 'percentage'
+          assign saved = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round | prepend: '-' | append: '%'
+            if compare_price_nums == 1 and product.compare_at_price_varies == false
+            echo saved
           else 
-            echo 'products.grid.on_sale_product' | t
+            echo 'products.grid.save_percent' | t: percent: saved
           endif
-        -%}
-      </span>
-
-    {%- endif -%}
-
+        elsif settings.product_card_badge_sale_type == 'amount'
+          assign saved = compare_at_price | minus: price | money
+          if compare_price_nums == 1
+            echo 'products.grid.save_amount_html' | t: amount: saved
+          else
+            echo 'products.grid.save_up_to_amount_html' | t: amount: saved
+          endif
+        else 
+          echo 'products.grid.on_sale_product' | t
+        endif
+      -%}
+    </span>
   {%- endif -%}
 
   {%- if settings.product_card_badge_custom_1_tags != blank and product.tags contains settings.product_card_badge_custom_1_tags -%}
