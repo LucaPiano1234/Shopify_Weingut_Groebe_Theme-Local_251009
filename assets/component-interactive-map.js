@@ -46,6 +46,7 @@
             this.createMap();
           });
           googleScript.defer = true;
+          googleScript.setAttribute('loading', 'async');
           googleScript.src = `https://maps.googleapis.com/maps/api/js?v=3&key=${KROWN.settings.google_maps_api_key}&callback=window.initLocalMap`;
           document.body.appendChild(googleScript);
         

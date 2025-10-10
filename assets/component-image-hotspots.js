@@ -6,11 +6,13 @@ if ( typeof ImageHotspots !== 'function' ) {
 			
       super();
 
+			this._prefix = window.KT_PREFIX || '';
+
       this.daysEl = this.querySelector('.days');
 			this.zIndex = 9;
 			      
       this.hotspots = this.querySelectorAll(
-				".image-hotspots__spot--bullet"
+				`.${this._prefix}image-hotspots__spot--bullet`
 			);
 			let previoushotspot = null;
 
@@ -46,14 +48,14 @@ if ( typeof ImageHotspots !== 'function' ) {
 if ( Shopify.designMode ) {
 	document.addEventListener("shopify:block:select", (e) => {
 		const block = e.target;
-		if ( block.classList.contains("image-hotspots__spot") ) {
+		if ( block.classList.contains(`.${this._prefix}image-hotspots__spot`) ) {
 			const bulletElements = document.querySelectorAll(
 				".image-hotspots__spot--bullet"
 			);
 			bulletElements.forEach((bulletElement) => {
 				bulletElement.classList.remove("active");
 			});
-			const activeBullet = block.querySelector('.image-hotspots__spot--bullet');
+			const activeBullet = block.querySelector(`.${this._prefix}image-hotspots__spot--bullet`);
 			activeBullet.classList.add('active');
 		}
 	})
