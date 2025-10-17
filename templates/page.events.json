@@ -111,13 +111,26 @@
             "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
+        },
+        "text_83HYgm": {
+          "type": "text",
+          "settings": {
+            "title": "Schlemmen in Rheinhessen 29. bis 31 Mai 2026",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Das Erlebnis beginnt bereits am reitagabend mit einem gemütlichen Lagerfeuer und Deftigem vom Grill mitten in den Weinbergen. </p><p>Am Samstag begeben wir uns auf eine Rundreise mit dem Nostalgiebus durch unser Rheinhessen. An den schönsten Plätzen kommen wir entlang, verkosten Weine und genießen kleine kulinarische Köstlichkeiten.</p><p><br/>Den Abend runden wir ab mit einer Betriebsbesichtigung während das Spanferkel brutzelt.</p><p><br/>Das erwartet Sie:<br/>• Zwei Übernachtungen inkl. Frühstück<br/>• Grillabend im Weinberg am Freitagabend<br/>• kulinarische Kleinigkeiten am Samstag, sowie Mittagessen & Kaffee und Kuchen<br/>• Nostalgie-Busfahrt durch Rheinhessen<br/>• Spanferkel Genuss am Samstag Abend<br/>• Weinprobe unserer gesamten Weinvielfalt</p><p>Kosten: 199 Euro pro Person zzgl. 130 Euro für Hotel <br/>(wir haben bereits Zimmer geblockt)</p><p><br/>Bis auf die eigene Anreise zu uns nach Westhofen, ist an diesem Wochenende alles inklusive.</p>",
+            "hide_block_if": false
+          }
         }
       },
       "block_order": [
         "text_ifLJ7E",
         "text_7kUfit",
         "text_pYRVka",
-        "text_RhMgQX"
+        "text_RhMgQX",
+        "text_83HYgm"
       ],
       "settings": {
         "heading": "Unsere nächsten Veranstaltungen:",
