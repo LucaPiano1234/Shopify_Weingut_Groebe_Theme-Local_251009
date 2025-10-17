@@ -81,7 +81,7 @@
             "icon": "no-icon",
             "button_label": "",
             "button_link": "",
-            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. <a href=\"/pages/contact\" title=\"Kontakt\">Anmeldung erbeten – Dauer ca. 1 Stunde.</a></p>",
+            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. Anmeldung erbeten – Dauer ca. 1 Stunde. <a href=\"/pages/contact\" title=\"Kontakt\">Bitte telefonisch oder per Mail anmelden oder einfach das Kontaktformular ausfüllen.</a></p>",
             "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
@@ -94,7 +94,7 @@
             "icon": "no-icon",
             "button_label": "",
             "button_link": "",
-            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. <a href=\"/pages/contact\" title=\"Kontakt\">Anmeldung erbeten – Dauer ca. 1 Stunde.</a></p>",
+            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. Anmeldung erbeten – Dauer ca. 1 Stunde. <a href=\"/pages/contact\" title=\"Kontakt\">Bitte telefonisch oder per Mail anmelden oder einfach das Kontaktformular ausfüllen.</a></p>",
             "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
@@ -222,7 +222,7 @@
         "text_D8NLH9": {
           "type": "text",
           "settings": {
-            "title": "Weinprobe mit Planwagenfahrt am 30.08.2025 - ausgebucht",
+            "title": "Weinprobe mit Planwagenfahrt am 30.08.2025",
             "subtitle": "",
             "icon": "no-icon",
             "button_label": "",
