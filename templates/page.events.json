@@ -73,48 +73,51 @@
             "hide_block_if": false
           }
         },
-        "text_TRpf8G": {
+        "text_7kUfit": {
           "type": "text",
           "settings": {
-            "title": "Weinprobe mit Planwagenfahrt am 28.06.2025 - ausgebucht",
+            "title": "Advents(w)einkauf - 4.12.",
             "subtitle": "",
             "icon": "no-icon",
             "button_label": "",
             "button_link": "",
-            "body": "<h4>ab 14:30 Uhr</h4><p>Mit dem Planwagen geht es durch die Weinberge rund um Westhofen. Dabei genießen Sie unsere Weine dort wo sie heranwachsen und erhalten Einblicke in unser Weingut und die Arbeit des Winzers. Es erwarten Sie außerdem kulinarische Schmankerl von Wurst, Käse und Schokolade zu einzelnen Weinen, sowie die Verkostung mehrerer Weine und Säfte.</p><p>Maximale Teilnehmerzahl je Termin: 16 Personen</p><p></p><p>35,- € pro Person inkl. Wein und Vesper I nur mit Anmeldung</p>",
+            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. <a href=\"/pages/contact\" title=\"Kontakt\">Anmeldung erbeten – Dauer ca. 1 Stunde.</a></p>",
+            "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
         },
-        "text_tH9EDe": {
+        "text_pYRVka": {
           "type": "text",
           "settings": {
-            "title": "Weinprobe mit Planwagenfahrt am 30.08.2025 - ausgebucht",
+            "title": "Advents(w)einkauf - 11.12.",
             "subtitle": "",
             "icon": "no-icon",
             "button_label": "",
             "button_link": "",
-            "body": "<h4>ab 14:30 Uhr</h4><p>Mit dem Planwagen geht es durch die Weinberge rund um Westhofen. Dabei genießen Sie unsere Weine dort wo sie heranwachsen und erhalten Einblicke in unser Weingut und die Arbeit des Winzers. Es erwarten Sie außerdem kulinarische Schmankerl von Wurst, Käse und Schokolade zu einzelnen Weinen, sowie die Verkostung mehrerer Weine und Säfte.</p><p>Maximale Teilnehmerzahl je Termin: 16 Personen</p><p></p><p>35,- € pro Person inkl. Wein und Vesper I nur mit Anmeldung</p>",
+            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/><strong>Gratis-Genuss:</strong> Genießen Sie Glühwein oder Kinderpunsch auf’s Haus.<br/><br/><strong>Betriebsführung & Weinverkostung:</strong> Um 18:00 Uhr bieten wir eine kostenfreie Führung mit kleiner Weinverkostung an. <a href=\"/pages/contact\" title=\"Kontakt\">Anmeldung erbeten – Dauer ca. 1 Stunde.</a></p>",
+            "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
         },
-        "text_MUw3q3": {
+        "text_RhMgQX": {
           "type": "text",
           "settings": {
-            "title": "Old Crocks zu Gast im Weingut Groebe am 20.09. und 21.09.2025",
+            "title": "Advents(w)einkauf - 18.12.",
             "subtitle": "",
             "icon": "no-icon",
             "button_label": "",
             "button_link": "",
-            "body": "<p>Das Treffen für wirklich alte Motorräder!</p>",
+            "body": "<p><strong>Advents(w)einkauf – wir laden Sie herzlich ein!</strong></p><p><strong>Längere Öffnungszeit:</strong> Am Veranstaltungstag haben wir bis 19:00 Uhr für Sie geöffnet (statt 17:00 Uhr).<br/><br/>Besuchen Sie uns und decken Sie sich bei Glühwein und Kinderpunsch in Ruhe für die Weihnachtsfeiertage ein!</p>",
+            "image": "shopify://shop_images/Werbeflyer_Adventseinkauf.jpg",
             "hide_block_if": false
           }
         }
       },
       "block_order": [
         "text_ifLJ7E",
-        "text_TRpf8G",
-        "text_tH9EDe",
-        "text_MUw3q3"
+        "text_7kUfit",
+        "text_pYRVka",
+        "text_RhMgQX"
       ],
       "settings": {
         "heading": "Unsere nächsten Veranstaltungen:",
@@ -191,6 +194,42 @@
     "content_toggles_J4ikLH": {
       "type": "content-toggles",
       "blocks": {
+        "text_PR6a83": {
+          "type": "text",
+          "settings": {
+            "title": "Old Crocks zu Gast im Weingut Groebe am 20.09. und 21.09.2025",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Das Treffen für wirklich alte Motorräder!</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_RKedPQ": {
+          "type": "text",
+          "settings": {
+            "title": "Weinprobe mit Planwagenfahrt am 28.06.2025 - ausgebucht",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<h4>ab 14:30 Uhr</h4><p>Mit dem Planwagen geht es durch die Weinberge rund um Westhofen. Dabei genießen Sie unsere Weine dort wo sie heranwachsen und erhalten Einblicke in unser Weingut und die Arbeit des Winzers. Es erwarten Sie außerdem kulinarische Schmankerl von Wurst, Käse und Schokolade zu einzelnen Weinen, sowie die Verkostung mehrerer Weine und Säfte.</p><p>Maximale Teilnehmerzahl je Termin: 16 Personen</p><p></p><p>35,- € pro Person inkl. Wein und Vesper I nur mit Anmeldung</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_D8NLH9": {
+          "type": "text",
+          "settings": {
+            "title": "Weinprobe mit Planwagenfahrt am 30.08.2025 - ausgebucht",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<h4>ab 14:30 Uhr</h4><p>Mit dem Planwagen geht es durch die Weinberge rund um Westhofen. Dabei genießen Sie unsere Weine dort wo sie heranwachsen und erhalten Einblicke in unser Weingut und die Arbeit des Winzers. Es erwarten Sie außerdem kulinarische Schmankerl von Wurst, Käse und Schokolade zu einzelnen Weinen, sowie die Verkostung mehrerer Weine und Säfte.</p><p>Maximale Teilnehmerzahl je Termin: 16 Personen</p><p></p><p>35,- € pro Person inkl. Wein und Vesper I nur mit Anmeldung</p>",
+            "hide_block_if": false
+          }
+        },
         "text_UWEQ7y": {
           "type": "text",
           "settings": {
@@ -217,6 +256,9 @@
         }
       },
       "block_order": [
+        "text_PR6a83",
+        "text_RKedPQ",
+        "text_D8NLH9",
         "text_UWEQ7y",
         "text_RrCpei"
       ],
