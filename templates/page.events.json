@@ -231,18 +231,6 @@
             "hide_block_if": false
           }
         },
-        "text_UWEQ7y": {
-          "type": "text",
-          "settings": {
-            "title": "Wein & Grill am 31.08.2024",
-            "subtitle": "",
-            "icon": "no-icon",
-            "button_label": "",
-            "button_link": "",
-            "body": "<h4>ab 14:00 Uhr</h4><p>Dieses Event bietet Ihnen die Gelegenheit uns und unser Weingut mit allen Sinnen kennenzulernen. Wir führen Sie hinter die Kulissen, durch unsere Weinberge und verkosten natürlich unsere Weine und Säfte. Frisch gegrillter Idar-Obersteiner Schwenkbraten, sowie weitere Grillspezialitäten, Weingenuss und Live-Musik bilden den krönenden Abschluss das Tages.</p><p>95,- € / Person<br/>Nur mit Anmeldung</p>",
-            "hide_block_if": false
-          }
-        },
         "text_RKedPQ": {
           "type": "text",
           "settings": {
@@ -266,14 +254,26 @@
             "body": "<h4>ab 15:00 Uhr</h4><p>Ein Fest für die ganze Familie. Genießen Sie das einmalige Ambiente unseres Weinguts bei feinstem Wein und Saft. Für rheinhessische Kulinarik ist natürlich auch bestens gesorgt.<br/>Live-Musik begleitet den sommerlichen Abend.</p><p>Wir freuen uns auf Sie!</p>",
             "hide_block_if": false
           }
+        },
+        "text_UWEQ7y": {
+          "type": "text",
+          "settings": {
+            "title": "Wein & Grill am 31.08.2024",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<h4>ab 14:00 Uhr</h4><p>Dieses Event bietet Ihnen die Gelegenheit uns und unser Weingut mit allen Sinnen kennenzulernen. Wir führen Sie hinter die Kulissen, durch unsere Weinberge und verkosten natürlich unsere Weine und Säfte. Frisch gegrillter Idar-Obersteiner Schwenkbraten, sowie weitere Grillspezialitäten, Weingenuss und Live-Musik bilden den krönenden Abschluss das Tages.</p><p>95,- € / Person<br/>Nur mit Anmeldung</p>",
+            "hide_block_if": false
+          }
         }
       },
       "block_order": [
         "text_PR6a83",
         "text_D8NLH9",
-        "text_UWEQ7y",
         "text_RKedPQ",
-        "text_RrCpei"
+        "text_RrCpei",
+        "text_UWEQ7y"
       ],
       "settings": {
         "heading": "Vergangene Veranstaltungen",
