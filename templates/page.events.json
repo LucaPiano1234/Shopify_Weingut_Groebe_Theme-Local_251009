@@ -112,6 +112,18 @@
             "hide_block_if": false
           }
         },
+        "text_8rTbKW": {
+          "type": "text",
+          "settings": {
+            "title": "Reinglühen am 24.01.2026",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<h4>ab 17:00 Uhr</h4><p>Weil es so schön war, starten wir in das neue Jahr wieder mit unserem Winter-Event. Genießen Sie einen entspannten Abend bei Kerzenschein, Lagerfeuer, herzhaften Speisen und Groebe-Wein.</p>",
+            "hide_block_if": false
+          }
+        },
         "text_83HYgm": {
           "type": "text",
           "settings": {
@@ -121,18 +133,6 @@
             "button_label": "",
             "button_link": "",
             "body": "<p>Das Erlebnis beginnt bereits am reitagabend mit einem gemütlichen Lagerfeuer und Deftigem vom Grill mitten in den Weinbergen. </p><p>Am Samstag begeben wir uns auf eine Rundreise mit dem Nostalgiebus durch unser Rheinhessen. An den schönsten Plätzen kommen wir entlang, verkosten Weine und genießen kleine kulinarische Köstlichkeiten.</p><p><br/>Den Abend runden wir ab mit einer Betriebsbesichtigung während das Spanferkel brutzelt.</p><p><br/>Das erwartet Sie:<br/>• Zwei Übernachtungen inkl. Frühstück<br/>• Grillabend im Weinberg am Freitagabend<br/>• kulinarische Kleinigkeiten am Samstag, sowie Mittagessen & Kaffee und Kuchen<br/>• Nostalgie-Busfahrt durch Rheinhessen<br/>• Spanferkel Genuss am Samstag Abend<br/>• Weinprobe unserer gesamten Weinvielfalt</p><p>Kosten: 199 Euro pro Person zzgl. 130 Euro für Hotel <br/>(wir haben bereits Zimmer geblockt)</p><p><br/>Bis auf die eigene Anreise zu uns nach Westhofen, ist an diesem Wochenende alles inklusive.</p>",
-            "hide_block_if": false
-          }
-        },
-        "text_wNCKNw": {
-          "type": "text",
-          "settings": {
-            "title": "Wein und Welle 14. bis 16. August 2026",
-            "subtitle": "",
-            "icon": "no-icon",
-            "button_label": "",
-            "button_link": "",
-            "body": "<p>Wir möchten Sie einladen zu einem unvergesslichen Wochenende in Rheinhessen, an dem Sie die Landschaft genießen,<br/>die Arbeit des Winzers kennen lernen und den Rhein in seiner schönsten Form erleben können.</p><p><br/>Wir starten am Freitagabend mit den legendären, frisch gegrillten Idar-Obersteiner Schwenkbraten. Am Samstag<br/>erhalten Sie einen Einblick in unser neues Weingut.</p><p><br/>Höhepunkt des Wochenendes bildet die Rheinschifffahrt auf einem eigens für uns gecharterten Schiff. Während wir an<br/>Weinbergsterrassen, historischen Ortschaften und Burgen vorbeiziehen, genießen wir ein 4-Gänge-Menü mit ausgewählten Weinen.</p><p><br/>Das erwartet Sie:<br/>• Zwei Übernachtungen inkl. Frühstück<br/>• Idar-Obersteiner Schwenkbraten am Freitagabend<br/>• Mittagessen am Samstag im Weingut & Kaffee und Kuchen<br/>• Bustransfer zum Schiff nach Bingen und zurück<br/>• Rheinschifffahrt mit kulinarischer Weinverkostung (4-Gänge-Menü)<br/>• Weinprobe unserer gesamten Weinvielfalt<br/></p><p>Kosten: 249 Euro pro Person zzgl. 130 Euro für Hotel <br/>(wir haben bereits Zimmer geblockt)</p><p><br/>Bis auf die eigene Anreise zu uns nach Westhofen, ist an diesem Wochenende alles inklusive.</p>",
             "hide_block_if": false
           }
         },
@@ -147,6 +147,18 @@
             "body": "<h4>ab 15:00 Uhr</h4><p>Ein Fest für die ganze Familie. Genießen Sie das einmalige Ambiente unseres Weinguts bei feinstem Wein und Saft. Für rheinhessische Kulinarik ist natürlich auch bestens gesorgt.<br/>Live-Musik begleitet den sommerlichen Abend.</p><p>Wir freuen uns auf Sie!</p>",
             "hide_block_if": false
           }
+        },
+        "text_wNCKNw": {
+          "type": "text",
+          "settings": {
+            "title": "Wein und Welle 14. bis 16. August 2026",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Wir möchten Sie einladen zu einem unvergesslichen Wochenende in Rheinhessen, an dem Sie die Landschaft genießen,<br/>die Arbeit des Winzers kennen lernen und den Rhein in seiner schönsten Form erleben können.</p><p><br/>Wir starten am Freitagabend mit den legendären, frisch gegrillten Idar-Obersteiner Schwenkbraten. Am Samstag<br/>erhalten Sie einen Einblick in unser neues Weingut.</p><p><br/>Höhepunkt des Wochenendes bildet die Rheinschifffahrt auf einem eigens für uns gecharterten Schiff. Während wir an<br/>Weinbergsterrassen, historischen Ortschaften und Burgen vorbeiziehen, genießen wir ein 4-Gänge-Menü mit ausgewählten Weinen.</p><p><br/>Das erwartet Sie:<br/>• Zwei Übernachtungen inkl. Frühstück<br/>• Idar-Obersteiner Schwenkbraten am Freitagabend<br/>• Mittagessen am Samstag im Weingut & Kaffee und Kuchen<br/>• Bustransfer zum Schiff nach Bingen und zurück<br/>• Rheinschifffahrt mit kulinarischer Weinverkostung (4-Gänge-Menü)<br/>• Weinprobe unserer gesamten Weinvielfalt<br/></p><p>Kosten: 249 Euro pro Person zzgl. 130 Euro für Hotel <br/>(wir haben bereits Zimmer geblockt)</p><p><br/>Bis auf die eigene Anreise zu uns nach Westhofen, ist an diesem Wochenende alles inklusive.</p>",
+            "hide_block_if": false
+          }
         }
       },
       "block_order": [
@@ -154,9 +166,10 @@
         "text_7kUfit",
         "text_pYRVka",
         "text_RhMgQX",
+        "text_8rTbKW",
         "text_83HYgm",
-        "text_wNCKNw",
-        "text_iQXM9r"
+        "text_iQXM9r",
+        "text_wNCKNw"
       ],
       "settings": {
         "heading": "Unsere nächsten Veranstaltungen:",
