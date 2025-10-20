@@ -126,10 +126,9 @@
       "blocks": {
         "image_UgXbbM": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.webp",
-            "mobile_image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.png",
+            "image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Festtagskiste_CRO_1.webp",
+            "mobile_image": "shopify://shop_images/Mobil.webp",
             "caption": "Vom Winzer geliefert:",
             "title": "Begeistern Sie Ihre Gäste an den Festtagen",
             "link": "shopify://products/festtagspaket",
