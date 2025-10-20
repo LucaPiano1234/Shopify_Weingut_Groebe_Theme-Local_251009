@@ -1,1 +1,135 @@
-{"type":"header","name":"t:sections.refactor_words.labels.header_group","sections":{"announcement":{"type":"announcement-bar","blocks":{"content_EC4dHn":{"type":"content","disabled":true,"settings":{"text":"Letzter Bestelltermin für eine pünktliche Lieferung zu Weihnachten: 17.12","link":"","target":false}},"content_Mjk4kT":{"type":"content","settings":{"text":"🚛 Der Winzer der's bringt! Wir bringen den Weingenuss direkt zu Ihnen nach Hause. 🍷 Hier klicken","link":"shopify:\/\/pages\/auslieferungsfahrten","target":false}},"content":{"type":"content","settings":{"text":"🍇 BIO-WEINGUT UND NATURSAFTKELTEREI AUS RHEINHESSEN","link":"","target":false}},"content_3GmEY7":{"type":"content","settings":{"text":"📞  06244 \/ 90 50 80","link":"tel:06244905080","target":false}},"content_8yNexg":{"type":"content","settings":{"text":"✉️ info@weingut-groebe.eu","link":"mailto:info@weingut-groebe.eu","target":false}}},"block_order":["content_EC4dHn","content_Mjk4kT","content","content_3GmEY7","content_8yNexg"],"settings":{"visibility":"all","show_locale_selector":true,"show_country_selector":true,"show_social_icons":true,"bar_bgcolor":"#6bb3d6","bar_txtcolor":"#000000"}},"header":{"type":"header","blocks":{"mega_menu_Dndq3z":{"type":"mega-menu","settings":{"menu_handle":"shop","show_promotion_block":true,"promotion_title":"","promotion_title_size":"text-size--xlarge","promotion_subtitle":"","promotion_subtitle_size":"text-size--regular","promotion_button_label":"Unser \"Wein trifft Saft\" Paket","promotion_button_size":"regular","promotion_button_link":"shopify:\/\/products\/wein-trifft-saft","promotion_color_txt":"#e1e1e1","promotion_color_bg":"rgba(0,0,0,0)","promotion_image":"shopify:\/\/shop_images\/WG_Groebe_WeintrifftSfat_2.png"}},"mega_menu_48nkeg":{"type":"mega-menu","settings":{"menu_handle":"natursäfte & fruchtwein","show_promotion_block":false,"promotion_title":"","promotion_title_size":"text-size--xlarge","promotion_subtitle":"","promotion_subtitle_size":"text-size--regular","promotion_button_label":"","promotion_button_size":"regular","promotion_button_link":"","promotion_color_txt":"#000000","promotion_color_bg":"#f3f3f3"}}},"block_order":["mega_menu_Dndq3z","mega_menu_48nkeg"],"custom_css":[],"settings":{"logo_src":"shopify:\/\/shop_images\/WG__Groebe_Logos_1.png","logo_height":100,"main_linklist":"main-menu","show_search":true,"sticky_header":true,"select_header_actions_on_mobile":"show_always","show_header_actions":false,"show_locale_selector":true,"show_country_selector":true,"show_social_icons":true}}},"order":["announcement","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.refactor_words.labels.header_group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "content_EC4dHn": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "text": "Letzter Bestelltermin für eine pünktliche Lieferung zu Weihnachten: 17.12",
+            "link": "",
+            "target": false
+          }
+        },
+        "content_Mjk4kT": {
+          "type": "content",
+          "settings": {
+            "text": "🚛 Der Winzer der's bringt! Wir bringen den Weingenuss direkt zu Ihnen nach Hause. 🍷 Hier klicken",
+            "link": "shopify://pages/auslieferungsfahrten",
+            "target": false
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {
+            "text": "🍇 BIO-WEINGUT UND NATURSAFTKELTEREI AUS RHEINHESSEN",
+            "link": "",
+            "target": false
+          }
+        },
+        "content_3GmEY7": {
+          "type": "content",
+          "settings": {
+            "text": "📞  06244 / 90 50 80",
+            "link": "tel:06244905080",
+            "target": false
+          }
+        },
+        "content_8yNexg": {
+          "type": "content",
+          "settings": {
+            "text": "✉️ info@weingut-groebe.eu",
+            "link": "mailto:info@weingut-groebe.eu",
+            "target": false
+          }
+        }
+      },
+      "block_order": [
+        "content_EC4dHn",
+        "content_Mjk4kT",
+        "content",
+        "content_3GmEY7",
+        "content_8yNexg"
+      ],
+      "settings": {
+        "visibility": "all",
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "show_social_icons": true,
+        "bar_bgcolor": "#6bb3d6",
+        "bar_txtcolor": "#000000"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_Dndq3z": {
+          "type": "mega-menu",
+          "settings": {
+            "menu_handle": "shop",
+            "show_promotion_block": true,
+            "promotion_title": "",
+            "promotion_title_size": "text-size--xlarge",
+            "promotion_subtitle": "",
+            "promotion_subtitle_size": "text-size--regular",
+            "promotion_button_label": "Unser \"Wein trifft Saft\" Paket",
+            "promotion_button_size": "regular",
+            "promotion_button_link": "shopify://products/wein-trifft-saft",
+            "promotion_color_txt": "#e1e1e1",
+            "promotion_color_bg": "rgba(0,0,0,0)",
+            "promotion_image": "shopify://shop_images/WG_Groebe_WeintrifftSfat_2.png"
+          }
+        },
+        "mega_menu_48nkeg": {
+          "type": "mega-menu",
+          "settings": {
+            "menu_handle": "natursäfte & fruchtwein",
+            "show_promotion_block": false,
+            "promotion_title": "",
+            "promotion_title_size": "text-size--xlarge",
+            "promotion_subtitle": "",
+            "promotion_subtitle_size": "text-size--regular",
+            "promotion_button_label": "",
+            "promotion_button_size": "regular",
+            "promotion_button_link": "",
+            "promotion_color_txt": "#000000",
+            "promotion_color_bg": "#f3f3f3"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_Dndq3z",
+        "mega_menu_48nkeg"
+      ],
+      "custom_css": [],
+      "settings": {
+        "logo_src": "shopify://shop_images/WG__Groebe_Logos_1_65d0def8-1b35-4624-8004-4688bdb9a3d1.png",
+        "logo_height": 100,
+        "main_linklist": "main-menu",
+        "show_search": true,
+        "sticky_header": true,
+        "select_header_actions_on_mobile": "show_always",
+        "show_header_actions": false,
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "show_social_icons": true
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

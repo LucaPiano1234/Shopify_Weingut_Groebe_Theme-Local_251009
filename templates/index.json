@@ -124,6 +124,22 @@
     "slideshow_bkUQ4a": {
       "type": "slideshow",
       "blocks": {
+        "image_UgXbbM": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.webp",
+            "mobile_image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.png",
+            "caption": "Vom Winzer geliefert:",
+            "title": "Begeistern Sie Ihre Gäste an den Festtagen",
+            "link": "shopify://products/festtagspaket",
+            "open_in_new_window": false,
+            "button_label": "Festagskiste entdecken",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "#ffffff",
+            "seo_h_tag": "h3"
+          }
+        },
         "image_fQ799G": {
           "type": "image",
           "settings": {
@@ -134,22 +150,6 @@
             "link": "shopify://products/6er-kennenlernpaket",
             "open_in_new_window": false,
             "button_label": "Kennenlernpaket entdecken",
-            "color_background_main": "rgba(0,0,0,0)",
-            "color_text_main": "#ffffff",
-            "seo_h_tag": "h3"
-          }
-        },
-        "image_UgXbbM": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.webp",
-            "mobile_image": "shopify://shop_images/WG_Groebe_Homepage_Banner_Sommerkiste_CRO.png",
-            "caption": "Perfekt für den Endspurt!",
-            "title": "Sommerzeit ist Groebe-Zeit",
-            "link": "shopify://products/sommerkiste",
-            "open_in_new_window": false,
-            "button_label": "Sommerkiste entdecken",
             "color_background_main": "rgba(0,0,0,0)",
             "color_text_main": "#ffffff",
             "seo_h_tag": "h3"
@@ -189,8 +189,8 @@
         }
       },
       "block_order": [
-        "image_fQ799G",
         "image_UgXbbM",
+        "image_fQ799G",
         "image_xf8f4B",
         "image_XmWaP7"
       ],
