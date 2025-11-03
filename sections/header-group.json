@@ -84,9 +84,9 @@
             "promotion_title_size": "text-size--xlarge",
             "promotion_subtitle": "",
             "promotion_subtitle_size": "text-size--regular",
-            "promotion_button_label": "Unser \"Wein trifft Saft\" Paket",
+            "promotion_button_label": "Unsere Festtagskiste",
             "promotion_button_size": "regular",
-            "promotion_button_link": "shopify://products/wein-trifft-saft",
+            "promotion_button_link": "shopify://products/festtagspaket",
             "promotion_color_txt": "#e1e1e1",
             "promotion_color_bg": "rgba(0,0,0,0)",
             "promotion_image": "shopify://shop_images/WG_Groebe_WeintrifftSfat_2.png"
