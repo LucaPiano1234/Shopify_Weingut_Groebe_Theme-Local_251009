@@ -475,51 +475,6 @@
         "seo_h_tag": "h2"
       }
     },
-    "165650871288cb3c80": {
-      "type": "media-with-text-overlay",
-      "blocks": {
-        "1656508712d3848f85-0": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Traube-1024x682_1.jpg",
-            "caption": "",
-            "title": "",
-            "subtitle": "Die Ehrfurcht vor der Natur, unserem wichtigsten Gut und die Liebe zur Einzigartigkeit unserer Weine sind unser Antrieb zur Bewirtschaftung unserer Weinberge nach den strengen Auflagen der EU-Ökoverordnung. Teilen Sie mit uns die Freude am Wein und am Leben.",
-            "link": "",
-            "open_in_new_window": false,
-            "button_label": "",
-            "color_background_main": "rgba(0,0,0,0)",
-            "color_text_main": "#ffffff",
-            "color_hide_borders": true,
-            "color_hide_shadow": false,
-            "seo_h_tag": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "1656508712d3848f85-0"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "section_heading_layout": "section-heading--left",
-        "layout": "grid-1",
-        "height": "regular",
-        "alignment": "horizontal-center align-content--vertical-middle",
-        "width": "60%",
-        "caption_size": "small",
-        "title_size": "h3",
-        "subtitle_size": "regular",
-        "button_size": "regular",
-        "button_style": "outline",
-        "section_background_color": "rgba(0,0,0,0)",
-        "section_background_gradient": "",
-        "section_heading_color": "rgba(0,0,0,0)",
-        "remove_margin": true,
-        "seo_h_tag": "h2"
-      }
-    },
     "165406738229739f4d": {
       "type": "promotion-cards",
       "blocks": {
@@ -633,7 +588,7 @@
         ".card .button--solid {background-color: #6bb3d6; border-color: #ffffff00; color: #fff;}"
       ],
       "settings": {
-        "desktop_height": "60vh",
+        "desktop_height": "40vh",
         "mobile_height": "60vh",
         "is_auto_height": false,
         "autorotate_enable": false,
@@ -966,7 +921,6 @@
     "16546982542e923b5a",
     "video_3RgNUV",
     "featured-collection",
-    "165650871288cb3c80",
     "165406738229739f4d",
     "slideshow_3wqPh9",
     "16541619272fee0e4e",
