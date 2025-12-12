@@ -227,7 +227,7 @@
               "show_repeat": "once",
               "title": "Entdecken Sie alle Neuigkeiten aus der Groebe-Welt!",
               "content": "<p><a href=\"/pages/newsletter-anmeldung\" target=\"_blank\" title=\"Newsletter-Anmeldung\">Mit unserem Newsletter informieren wir Sie zukünftig über aktuelle Sonderangebote, Veranstaltungen und vieles mehr.</a></p>",
-              "box_size": "small",
+              "box_size": "large",
               "popup_bgcolor": "#6bb3d6",
               "popup_txtcolor": "#383442"
             }
@@ -309,11 +309,6 @@
         "settings": {
           "hide_label": true
         }
-      },
-      "13191946590013868116": {
-        "type": "shopify://apps/feebee/blocks/global/eb243dcb-aa50-48eb-ad4e-3a2116e4122b",
-        "disabled": true,
-        "settings": {}
       }
     }
   },
