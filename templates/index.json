@@ -829,7 +829,7 @@
         ".card .button--solid {background-color: #383442; border-color: #ffffff00; color: #fff;}"
       ],
       "settings": {
-        "desktop_height": "80vh",
+        "desktop_height": "50vh",
         "mobile_height": "60vh",
         "is_auto_height": false,
         "autorotate_enable": false,
